@@ -1,0 +1,72 @@
+<?php include('templates/header.php'); ?>
+<?php include('templates/navbar.php'); ?>
+<?php include('templates/sidebar.php'); ?>
+<div class="container-fluid">
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <h2>Form tambah data criteria</h2>
+
+        <div class="row justify-content-md-center">
+            <div class="col-8">
+                <form action="<?php echo base_url() . 'superadmin/crud_data/create_kriteria'; ?>" method="post">
+                    <div class="form-group">
+                        <label for="nama_operasi">Nama Operasi :</label>
+                        <input type="text" name="nama_operasi" class="form-control" value="" id="nama_operasi" required>
+                    </div>
+                    <label for="id">Id Workorder :</label>
+                    <select type="text" name="id_workorder" id="id_workorder" class="form-control" placeholder="Enter Id Work Center">
+                        <option value=""></option>
+
+                        <?php
+                        foreach ($workorder as $data) { // Lakukan looping pada variabel siswa dari controller
+                            echo "<option value='" . $data->id_wo . "'>" . $data->id_wo . "</option>";
+                        }
+                        ?>
+                    </select>
+                    <div class="form-group">
+                        <label>quantity :</label>
+                        <select name="qty" id="qty" class="form-control">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>standard time :</label>
+                        <select name="standard_time" id="standard_time" class="form-control">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>setup time :</label>
+                        <select name="setup_time" id="setup_time" class="form-control">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="setup_time">tanggal pengiriman :</label>
+                        <div class='input-group date' id='tanggal'>
+                            <input name="urgensi" type="text" class="form-control" id="input_dtp_default" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="setup_time">plan start date :</label>
+                        <div class='input-group date' id='tanggal1'>
+                            <input name="psd" type="text" class="form-control" id="input_dtp_default" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_workcenter">Work Center :</label>
+                        <input type="text" name="id_workcenter" class="form-control" value="<?= $id_workcenter ?>" id="id_workcenter">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>
+<?php include('templates/footer.php'); ?>
